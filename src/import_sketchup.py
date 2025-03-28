@@ -279,12 +279,13 @@ def menu_func_import(self, context):
     self.layout.operator(ImportSketchUp.bl_idname, text="SketchUp (.kmz/.dae)")
 
 def register():
-    bpy.utils.register_module(__name__)
-    bpy.types.INFO_MT_file_import.append(menu_func_import)
+    bpy.utils.register_class(ImportSketchUp)
+    bpy.types.TOPBAR_MT_file_import.append(menu_func_import)  # Atualizado para Blender 2.80+
 
 def unregister():
-    bpy.utils.unregister_module(__name__)
-    bpy.types.INFO_MT_file_import.remove(menu_func_import)
+    bpy.utils.unregister_class(ImportSketchUp)
+    bpy.types.TOPBAR_MT_file_import.remove(menu_func_import)
+
 
 if __name__ == "__main__":
     register()
